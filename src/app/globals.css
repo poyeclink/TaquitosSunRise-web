@@ -1,0 +1,42 @@
+@import "tailwindcss";
+/* Fuente de verdad de la marca: no definir colores ni tipografía fuera de este archivo de tokens. */
+@import "../../brand-assets/tokens/tokens.css";
+
+/*
+ * Tailwind solo expone la paleta de marca: se borra la paleta por defecto
+ * para que no aparezcan hex sueltos (`bg-red-500`, etc.) en componentes.
+ */
+@theme inline {
+  --color-*: initial;
+  --color-crimson: var(--brand-crimson);
+  --color-charcoal: var(--brand-charcoal);
+  --color-aqua: var(--brand-aqua); /* Solo acento o texto grande: 3.06:1 sobre blanco */
+  --color-white: var(--brand-white);
+
+  /* `--font-league-spartan` lo genera next/font en el layout raíz. */
+  --font-sans: var(--font-league-spartan), var(--font-body);
+}
+
+@layer base {
+  body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+  }
+
+  h1 {
+    font-size: var(--text-h1);
+    font-weight: var(--weight-bold);
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: var(--text-h2);
+    font-weight: var(--weight-medium);
+    line-height: 1.2;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--brand-aqua);
+    outline-offset: 2px;
+  }
+}

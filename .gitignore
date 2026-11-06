@@ -1,0 +1,35 @@
+# Sistema
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Dependencias
+node_modules/
+.pnp
+.pnp.*
+
+# Next.js y builds
+.next/
+out/
+build/
+next-env.d.ts
+*.tsbuildinfo
+
+# Tests
+coverage/
+
+# Variables de entorno: nunca se suben (solo la plantilla)
+.env*
+!.env.example
+
+# Debug
+npm-debug.log*
+*.pem
+
+# Deploy
+.vercel
+
+# Archivos fuente pesados de diseño: viven en OneDrive, no en el repo
+*.ai
+*.psd
+*.zip

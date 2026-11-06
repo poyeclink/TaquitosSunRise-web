@@ -1,0 +1,32 @@
+/* Sunrise Taquitos — design tokens
+   Fuente: Brand Guidelines (Aug 2026). No usar hex sueltos fuera de este archivo. */
+:root {
+  /* Paleta */
+  --brand-crimson: #bb0d2f;   /* Primario · Pantone 200 C */
+  --brand-charcoal: #3f4443;  /* Primario · Pantone 446 C */
+  --brand-aqua: #2ea589;      /* Secundario (acento) · Pantone 3435 C */
+  --brand-white: #ffffff;
+  --brand-gray: #999999;      /* Solo para logos en escala de grises */
+
+  /* Roles */
+  --color-primary: var(--brand-crimson);
+  --color-text: var(--brand-charcoal);
+  --color-accent: var(--brand-aqua);   /* No usar para texto normal sobre blanco (3.06:1) */
+  --color-bg: var(--brand-white);
+  --color-on-primary: var(--brand-white);
+
+  /* Tipografía */
+  --font-body: "League Spartan", system-ui, sans-serif;
+  --font-accent: "LosLana Niu Pro", var(--font-body); /* Solo si hay licencia web */
+  --weight-regular: 400;
+  --weight-medium: 500;
+  --weight-bold: 700;
+
+  /* Escala: h1 ≥ 300 % del cuerpo, h2 = 200 % */
+  --text-base: 1rem;
+  --text-h2: 2rem;
+  --text-h1: 3rem;
+
+  /* Logo */
+  --logo-min-width: 75.6px; /* 2 cm */
+}
