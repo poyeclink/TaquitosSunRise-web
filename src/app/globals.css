@@ -18,6 +18,11 @@
 }
 
 @layer base {
+  /* El header es sticky: los anclas (#historia) no quedan tapadas. */
+  html {
+    scroll-padding-top: 7rem;
+  }
+
   body {
     background-color: var(--color-bg);
     color: var(--color-text);

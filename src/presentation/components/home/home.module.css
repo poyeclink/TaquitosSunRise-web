@@ -1,0 +1,199 @@
+/*
+ * Animaciones del home. Todo el movimiento respeta `prefers-reduced-motion`.
+ * Colores solo desde los tokens de marca (nada de hex sueltos).
+ */
+
+/* ---------- Hero: rayos de sol que giran detrás del logo ---------- */
+.rays {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  background: repeating-conic-gradient(
+    from 0deg,
+    color-mix(in srgb, var(--brand-white) 28%, transparent) 0deg 3deg,
+    transparent 3deg 12deg
+  );
+  mask: radial-gradient(circle, transparent 40%, black 41%, black 58%, transparent 71%);
+}
+
+.raysAccent {
+  position: absolute;
+  inset: 6%;
+  border-radius: 9999px;
+  border: 2px dashed color-mix(in srgb, var(--brand-aqua) 80%, var(--brand-white));
+  opacity: 0.55;
+}
+
+/* Parallax: el `translate` sigue al cursor (variables --mx/--my del contenedor). */
+.parallax {
+  translate: calc(var(--mx, 0) * var(--depth, 0) * 1px) calc(var(--my, 0) * var(--depth, 0) * 1px);
+  transition:
+    translate 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    scale 0.3s ease;
+}
+
+@media (hover: hover) {
+  .badge:hover {
+    scale: 1.12;
+  }
+}
+
+/* ---------- Cinta de personalidad ---------- */
+.marquee {
+  display: flex;
+  width: max-content;
+}
+
+/* Sin animación, la cinta se muestra completa y centrada en vez de cortada. */
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    width: auto;
+    justify-content: center;
+    padding-inline: 1rem;
+  }
+
+  .marquee > ul {
+    /* La lista base es `shrink-0` (para la animación); aquí debe ajustarse al ancho. */
+    flex-shrink: 1;
+    min-width: 0;
+    flex-wrap: wrap;
+    justify-content: center;
+    row-gap: 1rem;
+    padding-right: 0;
+  }
+
+  .marquee > ul[aria-hidden="true"] {
+    display: none;
+  }
+}
+
+/* ---------- Pilares ---------- */
+.pillarCard {
+  transition:
+    translate 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s ease;
+}
+
+@media (hover: hover) {
+  .pillarCard:hover {
+    translate: 0 -0.5rem;
+    box-shadow: 0 1.5rem 3rem -1rem color-mix(in srgb, var(--brand-charcoal) 60%, transparent);
+  }
+
+  .pillarCard:hover .pillarPhoto,
+  .zoomOnHover:hover .zoom {
+    scale: 1.06;
+  }
+
+  .pillarCard:hover .pillarLettering {
+    rotate: -3deg;
+    scale: 1.06;
+  }
+}
+
+.pillarPhoto,
+.zoom {
+  transition: scale 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.pillarLettering {
+  transition:
+    rotate 0.5s cubic-bezier(0.34, 1.56, 0.64, 1),
+    scale 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------- Ritual del día: panel que entra al cambiar de momento ---------- */
+.panelEnter {
+  animation: panel-in 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    translate: 0 0.75rem;
+  }
+}
+
+/* ---------- Movimiento opcional ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  .rays {
+    animation: spin 80s linear infinite;
+  }
+
+  .raysAccent {
+    animation: spin 120s linear infinite reverse;
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .marquee {
+    animation: marquee 45s linear infinite;
+  }
+
+  .marqueeTrack:hover .marquee {
+    animation-play-state: paused;
+  }
+
+  .wiggleOnHover:hover .wiggle {
+    animation: wiggle 0.6s ease-in-out;
+  }
+
+  /* Aparición al hacer scroll, sin JavaScript (scroll-driven animations). */
+  @supports (animation-timeline: view()) {
+    .reveal {
+      animation: reveal linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 70%;
+    }
+
+    /* Las líneas del manifiesto se "entintan" a medida que se leen. */
+    .ink {
+      animation: ink linear both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 45%;
+    }
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-0.6rem) rotate(-4deg);
+  }
+}
+
+@keyframes marquee {
+  to {
+    translate: -50% 0;
+  }
+}
+
+@keyframes wiggle {
+  25% {
+    rotate: -10deg;
+  }
+  75% {
+    rotate: 10deg;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    translate: 0 2.5rem;
+  }
+}
+
+@keyframes ink {
+  from {
+    opacity: 0.2;
+  }
+}

@@ -12,3 +12,7 @@ Los archivos de diseño pesados **no van en el repo**. Están en la carpeta comp
 | ZIP original del diseñador | `../99_Archivo/` |
 
 Si alguien clona el repo fuera de OneDrive, debe pedir acceso a esa carpeta.
+
+## Fotos temporales
+
+El sitio usa fotos de Unsplash mientras no haya fotografía propia. Lista y créditos en [`fotos-unsplash.md`](fotos-unsplash.md).

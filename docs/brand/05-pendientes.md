@@ -7,6 +7,7 @@ Estos puntos se validan con el cliente o el diseñador antes de usarlos en produ
 - [ ] **Brownist:** uso comercial vía Creative Fabrica. Confirmar que hay licencia (en la web solo se usa dentro del logo SVG).
 - [ ] **LosLana Niu Pro:** Adobe Fonts. Si se quiere en titulares web, se necesita un kit web de Adobe Fonts.
 - [ ] **Fotos de stock del guideline:** el paquete no incluye 6 imágenes (Familia cocina, Obrero, Medical personal, Familia abrazo 2, Familia americana, Screenshot). Confirmar origen y licencia antes de usar fotos similares.
+- [ ] **Fotografía propia:** el home usa fotos temporales de Unsplash (ver `docs/referencias/fotos-unsplash.md`). Reemplazarlas por fotos reales del restaurante, la comida y el equipo.
 - [ ] **Imagen generada con IA:** `ChatGPT Image 20 ago 2026` está dentro de los mockups. Confirmar si se puede usar públicamente.
 
 ## Contenido del negocio (no inventar)
