@@ -15,4 +15,4 @@ Si alguien clona el repo fuera de OneDrive, debe pedir acceso a esa carpeta.
 
 ## Fotos temporales
 
-El sitio usa fotos de Unsplash mientras no haya fotografía propia. Lista y créditos en [`fotos-unsplash.md`](fotos-unsplash.md).
+El sitio usa fotografía propia del negocio: WebP en `brand-assets/fotos/` (inventario en `docs/brand/04-inventario-assets.md`). Los JPG originales viven en `brand-assets/imagenes/`, fuera de git.

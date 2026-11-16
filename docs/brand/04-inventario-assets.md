@@ -106,3 +106,11 @@ Archivos listos para la web en `brand-assets/`. Formato de nombre: `tipo-nombre-
 
 - `tokens/tokens.css` y `tokens/tokens.json`: colores y tipografía.
 - `fonts/README.md`: fuentes y licencias.
+
+## `fotos/` — Fotografía propia del negocio, WebP (74)
+
+Convertidas desde los JPG originales de `brand-assets/imagenes/` (no se versionan: 1.5 GB). Lado largo máximo 2400 px, calidad 82, sin metadatos EXIF ni GPS. Total ~28 MB.
+
+- Platillos (3 tomas por platillo): `barbacoa-plate`, `barbacoa-taco`, `carne-guisada`, `chicken-fajita-quesadillas` (4), `el-chory`, `el-jefe`, `enchilada-plate`, `fajita-taco`, `mamas-migas`, `migas-plate`, `mindful-taco`, `ranchero-plate`.
+- Bebidas: `orcha-latte`, `tres-leches-latte`.
+- Otras: `flatlay`, `dji-0191` (dron), `dsc08978` … `dsc09313` (local, equipo y ambiente; sin clasificar).

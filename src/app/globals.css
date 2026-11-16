@@ -17,6 +17,17 @@
   --font-sans: var(--font-league-spartan), var(--font-body);
 }
 
+/*
+ * `wide:` = pantalla apaisada y con altura suficiente, con animaciones permitidas.
+ * La secuencia de scroll del home usa ahí su composición de escritorio
+ * (misma consulta en `scroll-sequence.tsx`).
+ */
+@custom-variant wide {
+  @media (min-width: 768px) and (min-aspect-ratio: 5/4) and (min-height: 560px) and (prefers-reduced-motion: no-preference) {
+    @slot;
+  }
+}
+
 @layer base {
   /* El header es sticky: los anclas (#historia) no quedan tapadas. */
   html {

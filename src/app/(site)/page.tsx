@@ -5,6 +5,7 @@ import { Hero } from "@/presentation/components/home/hero";
 import { PersonalityMarquee } from "@/presentation/components/home/personality-marquee";
 import { Pillars } from "@/presentation/components/home/pillars";
 import { Principles } from "@/presentation/components/home/principles";
+import { ScrollSequence } from "@/presentation/components/home/scroll-sequence";
 import { Story } from "@/presentation/components/home/story";
 
 export default async function HomePage() {
@@ -14,6 +15,7 @@ export default async function HomePage() {
     <>
       <Hero />
       <PersonalityMarquee />
+      <ScrollSequence />
       <DayRitual />
       <Pillars names={profile.pillars} />
       <Story mission={profile.mission} vision={profile.vision} />

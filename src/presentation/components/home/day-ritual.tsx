@@ -37,7 +37,8 @@ export function DayRitual() {
               alt={index === active ? item.photo.alt : ""}
               aria-hidden={index !== active}
               fill
-              sizes="(min-width: 1152px) 37rem, (min-width: 768px) 52vw, 100vw"
+              sizes="(min-width: 1152px) 39rem, (min-width: 768px) 54vw, 100vw"
+              quality={90}
               className={`object-cover transition-[opacity,scale] duration-700 ease-out ${
                 index === active ? "scale-100 opacity-100" : "scale-105 opacity-0"
               }`}

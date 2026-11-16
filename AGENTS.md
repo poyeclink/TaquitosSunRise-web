@@ -34,7 +34,8 @@ Instrucciones para cualquier agente de código (Claude Code, Cursor, Codex, etc.
 | `src/app/` | Rutas de Next.js |
 | `docs/arquitectura.md` | Capas, regla de dependencias, caché y hoja de ruta de Toast |
 | `docs/brand/` | Concepto, identidad visual, voz, inventario de assets y pendientes |
-| `docs/referencias/` | Dónde están los archivos fuente (PDF, AI, PSD) |
+| `docs/referencias/` | Dónde están los archivos fuente (PDF, AI, PSD) y la escena de Blender de la secuencia del home |
+| `public/secuencias/` | Frames WebP de la secuencia de scroll del home (se generan desde Blender) |
 | `brand-assets/` | Logos, íconos, frases, texturas, tokens y notas de fuentes, listos para usar en la web |
 
 ## Reglas
