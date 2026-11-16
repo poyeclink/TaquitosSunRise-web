@@ -15,7 +15,7 @@ const SPOTS = [
 export function ClosingCta() {
   return (
     <section aria-labelledby="cierre-title" className="relative isolate overflow-hidden px-4 py-24 sm:py-32">
-      <Image src={closing.photo.src} alt="" fill sizes="100vw" className="-z-20 object-cover" />
+      <Image src={closing.photo.src} alt="" fill sizes="100vw" quality={90} className="-z-20 object-cover" />
       <div aria-hidden className="absolute inset-0 -z-10 bg-charcoal/65" />
 
       {closing.icons.map((icon, index) => (

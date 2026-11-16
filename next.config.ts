@@ -7,11 +7,9 @@ const nextConfig: NextConfig = {
   cacheComponents: true,
   partialPrefetching: true,
   images: {
-    // Fotos temporales de Unsplash hasta tener las propias de la marca.
-    // Solo se permite el tamaño fuente fijo de `src/presentation/media/unsplash.ts`.
-    remotePatterns: [
-      { protocol: "https", hostname: "images.unsplash.com", pathname: "/photo-*", search: "?w=2400&q=80&fm=jpg" },
-    ],
+    // 75 es el valor por defecto (íconos, texturas); 90 se usa en las fotos para que
+    // la segunda compresión de next/image sobre los WebP no deje artefactos.
+    qualities: [75, 90],
   },
   turbopack: {
     rules: {

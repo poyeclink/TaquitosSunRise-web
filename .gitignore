@@ -33,3 +33,9 @@ npm-debug.log*
 *.ai
 *.psd
 *.zip
+
+# Respaldos automáticos de Blender
+*.blend1
+
+# Fotos originales del negocio (pesadas): solo se versionan los WebP de brand-assets/fotos/
+brand-assets/imagenes/

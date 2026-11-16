@@ -3,21 +3,24 @@
  * No agregar aquí datos del negocio (precios, horarios, direcciones): esos vienen del cliente.
  */
 import type { StaticImageData } from "next/image";
-import { photos, type Photo } from "@/presentation/media/unsplash";
+import { photos, type Photo } from "@/presentation/media/photos";
 
 import fraseFromOurCocina from "@brand/frases/frase-from-our-cocina-full-color.svg";
 import fraseGoodTaquitosBlanco from "@brand/frases/frase-good-taquitos-good-days-blanco.svg";
+import fraseGoodTaquitos from "@brand/frases/frase-good-taquitos-good-days-full-color.svg";
 import fraseHaveAGreatDia from "@brand/frases/frase-have-a-great-dia-full-color.svg";
 import fraseHechoConFe from "@brand/frases/frase-hecho-con-fe-rojo.svg";
 import fraseHomeMade from "@brand/frases/frase-home-made-good-food-full-color.svg";
 import fraseBreakfastTaco from "@brand/frases/frase-home-of-the-breakfast-taco-full-color.svg";
 import fraseMadeWithCarino from "@brand/frases/frase-made-with-carino-full-color.svg";
 import fraseTasteLikeFamilia from "@brand/frases/frase-sunrise-taste-like-familia-full-color.svg";
+import fraseTheHomemadeWay from "@brand/frases/frase-the-homemade-way-full-color.svg";
 import fraseTuCasaAlways from "@brand/frases/frase-tu-casa-always-rojo.svg";
 
 import iconoAguacate from "@brand/iconos/icono-aguacate.svg";
 import iconoCaja from "@brand/iconos/icono-caja.svg";
 import iconoChile from "@brand/iconos/icono-chile.svg";
+import iconoCuchara from "@brand/iconos/icono-cuchara.svg";
 import iconoDesayuno from "@brand/iconos/icono-desayuno.svg";
 import iconoFuego from "@brand/iconos/icono-fuego.svg";
 import iconoHuevo from "@brand/iconos/icono-huevo.svg";
@@ -49,14 +52,168 @@ export const hero = {
   isotipo: isotipoRojo,
   since: "Est. 1988",
   texture: texturaCrimson,
-  /** Íconos que flotan alrededor del logo. `depth` controla cuánto siguen al cursor. */
+  /**
+   * Íconos que flotan alrededor de la foto. `depth` controla cuánto siguen al cursor.
+   * Al tocarlos abren una tarjeta (`reveal`). El copy es una propuesta según la guía de voz:
+   * validarlo con el cliente (docs/brand/05-pendientes.md).
+   */
   orbit: [
-    { src: iconoTaco, position: "left-[-12%] top-[16%]", size: "size-16 sm:size-20", depth: 28 },
-    { src: iconoAguacate, position: "right-[-8%] top-[6%]", size: "size-14 sm:size-16", depth: -22 },
-    { src: iconoHuevo, position: "right-[-12%] top-[48%]", size: "size-12 sm:size-16", depth: 18 },
-    { src: iconoChile, position: "bottom-[-4%] right-[8%]", size: "size-14 sm:size-[4.5rem]", depth: -30 },
-    { src: iconoLimon, position: "left-[-9%] top-[52%]", size: "size-10 sm:size-12", depth: -16 },
-  ],
+    {
+      src: iconoTaco,
+      position: "left-[-12%] top-[16%]",
+      size: "size-16 sm:size-20",
+      depth: 28,
+      reveal: {
+        name: "Taco",
+        kicker: "El clásico",
+        lettering: { src: fraseBreakfastTaco, alt: "Home of the breakfast taco" },
+        text: "Nuestro corazón: el taquito de desayuno, hecho en casa para empezar bien el día.",
+        cta: { label: "Ver el menú", href: "/menu" },
+      },
+    },
+    {
+      src: iconoAguacate,
+      position: "right-[-8%] top-[6%]",
+      size: "size-14 sm:size-16",
+      depth: -22,
+      reveal: {
+        name: "Aguacate",
+        kicker: "Lo fresco",
+        lettering: { src: fraseHomeMade, alt: "Home made, good food" },
+        text: "Lo sencillo, bien hecho. Sabores que se sienten caseros en cada bocado.",
+        cta: { label: "Ver el menú", href: "/menu" },
+      },
+    },
+    {
+      src: iconoHuevo,
+      position: "right-[-12%] top-[48%]",
+      size: "size-12 sm:size-16",
+      depth: 18,
+      reveal: {
+        name: "Huevo",
+        kicker: "El amanecer",
+        lettering: { src: fraseHaveAGreatDia, alt: "Have a great día" },
+        text: "Cada mañana empieza en el sartén. Un buen desayuno es el inicio de un buen día.",
+        cta: { label: "Ver el menú", href: "/menu" },
+      },
+    },
+    {
+      src: iconoChile,
+      position: "bottom-[-4%] right-[8%]",
+      size: "size-14 sm:size-[4.5rem]",
+      depth: -30,
+      reveal: {
+        name: "Chile",
+        kicker: "La sazón",
+        lettering: { src: fraseMadeWithCarino, alt: "Made with cariño" },
+        text: "El toque Tex-Mex que nos hace sentir en casa, puesto siempre con cariño.",
+        cta: { label: "Ver el menú", href: "/menu" },
+      },
+    },
+    {
+      src: iconoLimon,
+      position: "left-[-9%] top-[52%]",
+      size: "size-11 sm:size-12",
+      depth: -16,
+      reveal: {
+        name: "Limón",
+        kicker: "El toque final",
+        lettering: { src: fraseTheHomemadeWay, alt: "The homemade way" },
+        text: "Un chorrito de limón y listo: así se sirve, the homemade way.",
+        cta: { label: "Ver el menú", href: "/menu" },
+      },
+    },
+  ] satisfies readonly OrbitIcon[],
+  /** Lo que abre el sello del personaje (abajo a la izquierda de la foto). */
+  sealReveal: {
+    name: "Sunrise Taquitos",
+    kicker: "Est. 1988",
+    lettering: { src: fraseFromOurCocina, alt: "From our cocina to your familia" },
+    text: "Más de 35 años sirviendo con fe, familia y cariño, un amanecer a la vez.",
+    cta: { label: "Nuestra historia", href: "#historia" },
+  } satisfies OrbitReveal,
+};
+
+export interface OrbitReveal {
+  readonly name: string;
+  readonly kicker: string;
+  readonly lettering: Lettering;
+  readonly text: string;
+  readonly cta: { readonly label: string; readonly href: string };
+}
+
+export interface OrbitIcon {
+  readonly src: StaticImageData;
+  readonly position: string;
+  readonly size: string;
+  readonly depth: number;
+  readonly reveal: OrbitReveal;
+}
+
+export interface SequenceChapter {
+  readonly title: string;
+  readonly accent: string;
+  readonly nav: string;
+  readonly icon: StaticImageData;
+  readonly text: string;
+  readonly lettering?: Lettering;
+}
+
+/**
+ * Secuencia 3D que avanza con el scroll. Los frames se renderizan en Blender
+ * (docs/referencias/secuencia-huevo.blend): ver docs/referencias/secuencia-scroll.md.
+ */
+export const sequence = {
+  eyebrow: "The homemade way",
+  alt: "Un huevo se parte en el aire y cae a un sartén, donde termina como huevo estrellado",
+  frames: {
+    /** Carpeta en `public/`. Cada tamaño tiene `count` archivos: 001.webp, 002.webp… */
+    base: "/secuencias/huevo",
+    count: 144,
+    sets: {
+      /** Cuadro completo, para la composición apaisada. */
+      lg: { dir: "lg", width: 1600, height: 900 },
+      /** Recorte central, para la composición apilada (móvil). */
+      sm: { dir: "sm", width: 800, height: 720 },
+    },
+  },
+  /** Texto de la pista para empezar a hacer scroll. */
+  hint: "Desliza",
+  /**
+   * `accent` es la palabra del título que va en rojo; `nav`, el nombre corto en la barra de capítulos.
+   * El último capítulo cierra con el lettering de la marca.
+   */
+  chapters: [
+    {
+      title: "Crack the huevo.",
+      accent: "huevo.",
+      nav: "Crack",
+      icon: iconoHuevo,
+      text: "Así empieza el día en nuestra cocina: con las manos, como en casa.",
+    },
+    {
+      title: "Directo al sartén.",
+      accent: "sartén.",
+      nav: "Sartén",
+      icon: iconoFuego,
+      text: "Sin atajos. La rapidez nunca pierde el sabor casero.",
+    },
+    {
+      title: "Made with cariño.",
+      accent: "cariño.",
+      nav: "Cariño",
+      icon: iconoCuchara,
+      text: "Sin prisa y con buena mano, como se cocina en casa.",
+    },
+    {
+      title: "Y sale el sol.",
+      accent: "sol.",
+      nav: "Sol",
+      icon: iconoSol,
+      text: "Un nuevo amanecer, un buen taquito.",
+      lettering: { src: fraseGoodTaquitos, alt: "Good taquitos, good days" },
+    },
+  ] satisfies readonly SequenceChapter[],
 };
 
 /** Personalidad de marca (docs/brand/01-concepto.md). */
@@ -143,12 +300,16 @@ export const story = {
     "Creemos que servir va más allá de entregar comida. Es acompañar rutinas, reunir familias y construir comunidad, un amanecer a la vez.",
   ],
   signature: { src: fraseTuCasaAlways, alt: "Tu casa always" } satisfies Lettering,
+  /** Extremos de la línea de tiempo del manifiesto ("Est. 1988"). */
+  timeline: { start: "1988", end: "Hoy" },
+  sunIcon: iconoSol,
   why: "Porque la comida hecha en casa tiene el poder de unir a las familias y de convertir los pequeños rituales diarios en momentos memorables.",
 };
 
 export const principles = {
   eyebrow: "Cómo lo hacemos",
   title: "Seis principios, una misma mesa",
+  texture: texturaCrimson,
   items: [
     { title: "Hecho con intención", text: "Cada detalle se siente cercano, cálido y auténtico.", icon: iconoMoler },
     { title: "La familia primero", text: "Espacios pensados para compartir y sentirse en casa.", icon: iconoPlato },
