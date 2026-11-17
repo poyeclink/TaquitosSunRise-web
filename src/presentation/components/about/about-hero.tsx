@@ -2,8 +2,8 @@ import Image from "next/image";
 import Link from "next/link";
 import type { CSSProperties } from "react";
 import { aboutHero } from "@/presentation/components/about/about-content";
-import styles from "@/presentation/components/about/about.module.css";
-import { PointerField } from "@/presentation/components/about/pointer-fx";
+import motion from "@/presentation/components/motion/motion.module.css";
+import { PointerField } from "@/presentation/components/motion/pointer-fx";
 import homeStyles from "@/presentation/components/home/home.module.css";
 
 const order = (i: number) => ({ "--i": i }) as CSSProperties;
@@ -12,7 +12,7 @@ export function AboutHero({ foundedYear }: { foundedYear: number }) {
   return (
     <section aria-labelledby="nosotros-title" className="relative isolate overflow-hidden bg-charcoal text-white">
       {/* Foto del local con parallax; el velo la oscurece hacia el texto. */}
-      <div aria-hidden className={`${styles.heroParallax} absolute -inset-y-[10%] inset-x-0 -z-20`}>
+      <div aria-hidden className={`${motion.heroParallax} absolute -inset-y-[10%] inset-x-0 -z-20`}>
         <Image
           src={aboutHero.photo.src}
           alt=""
@@ -20,7 +20,7 @@ export function AboutHero({ foundedYear }: { foundedYear: number }) {
           sizes="100vw"
           quality={90}
           preload
-          className={`${styles.heroPhoto} object-cover`}
+          className={`${motion.heroPhoto} object-cover`}
         />
       </div>
       <div
@@ -30,21 +30,21 @@ export function AboutHero({ foundedYear }: { foundedYear: number }) {
 
       <PointerField className="relative">
         <div
-          className={`${styles.heroExit} mx-auto grid max-w-6xl items-center gap-12 px-4 pb-28 pt-14 sm:pt-20 md:grid-cols-[1.35fr_0.65fr] md:gap-8 md:pb-36 lg:min-h-[min(calc(100svh-6.5rem),50rem)]`}
+          className={`${motion.heroExit} mx-auto grid max-w-6xl items-center gap-12 px-4 pb-28 pt-14 sm:pt-20 md:grid-cols-[1.35fr_0.65fr] md:gap-8 md:pb-36 lg:min-h-[min(calc(100svh-6.5rem),50rem)]`}
         >
           <div className="flex flex-col items-start gap-6">
             <p
-              className={`${styles.rise} rounded-full border border-white/40 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] backdrop-blur-sm sm:text-sm`}
+              className={`${motion.rise} rounded-full border border-white/40 bg-white/10 px-4 py-1.5 text-xs font-bold uppercase tracking-[0.25em] backdrop-blur-sm sm:text-sm`}
               style={order(0)}
             >
               {aboutHero.eyebrow}
             </p>
 
             <h1 id="nosotros-title" className="text-balance text-5xl leading-[1.02] sm:text-6xl lg:text-7xl">
-              <span className={`${styles.rise} block`} style={order(1)}>
+              <span className={`${motion.rise} block`} style={order(1)}>
                 {aboutHero.title}
               </span>
-              <span className={`${styles.rise} block`} style={order(2)}>
+              <span className={`${motion.rise} block`} style={order(2)}>
                 {aboutHero.titleAccent(foundedYear)}
                 <span aria-hidden className="ml-3 inline-block h-2 w-14 rounded-full bg-aqua align-middle sm:w-20" />
               </span>
@@ -53,15 +53,15 @@ export function AboutHero({ foundedYear }: { foundedYear: number }) {
             <Image
               src={aboutHero.lettering.src}
               alt={aboutHero.lettering.alt}
-              className={`${styles.rise} h-auto w-56 sm:w-72`}
+              className={`${motion.rise} h-auto w-56 sm:w-72`}
               style={order(3)}
             />
 
-            <p className={`${styles.rise} max-w-xl text-lg leading-relaxed text-white/90 sm:text-xl`} style={order(4)}>
+            <p className={`${motion.rise} max-w-xl text-lg leading-relaxed text-white/90 sm:text-xl`} style={order(4)}>
               {aboutHero.lead}
             </p>
 
-            <div className={`${styles.rise} flex flex-wrap gap-3`} style={order(5)}>
+            <div className={`${motion.rise} flex flex-wrap gap-3`} style={order(5)}>
               <a
                 href="#camino"
                 className="group inline-flex items-center gap-2 rounded-full bg-white px-7 py-3.5 text-lg font-bold text-crimson shadow-lg shadow-charcoal/30 transition hover:-translate-y-0.5 hover:shadow-xl focus-visible:outline-white"
@@ -81,7 +81,7 @@ export function AboutHero({ foundedYear }: { foundedYear: number }) {
           </div>
 
           {/* Sello de años: el sol de la marca con rayos que giran e íconos que siguen al cursor. */}
-          <div aria-hidden className={`${styles.rise} hidden justify-center md:flex`} style={order(4)}>
+          <div aria-hidden className={`${motion.rise} hidden justify-center md:flex`} style={order(4)}>
             <div className="relative grid aspect-square w-full max-w-[21rem] place-items-center">
               <div className={homeStyles.rays} />
               <div className={homeStyles.raysAccent} />
@@ -101,7 +101,7 @@ export function AboutHero({ foundedYear }: { foundedYear: number }) {
                   style={{ "--depth": floater.depth } as CSSProperties}
                 >
                   <span
-                    className={`${styles.float} grid ${floater.size} place-items-center rounded-full bg-white shadow-xl shadow-charcoal/40`}
+                    className={`${motion.float} grid ${floater.size} place-items-center rounded-full bg-white shadow-xl shadow-charcoal/40`}
                     style={{ "--delay": `${index * -1.5}s` } as CSSProperties}
                   >
                     <Image src={floater.src} alt="" className="h-auto w-3/5" />

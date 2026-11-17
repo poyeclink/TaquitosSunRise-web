@@ -17,7 +17,8 @@ Estos puntos se validan con el cliente o el diseñador antes de usarlos en produ
 - [ ] Menú y precios: vendrán de Toast POS.
 - [ ] Dominio definitivo: el guideline muestra `www.sunrisetaquitos.com` como ejemplo; confirmar.
 - [ ] Idioma o idiomas del sitio (EN / ES / bilingüe).
-- [ ] Detalles del servicio de catering.
+- [ ] Detalles del servicio de catering (menú, mínimo de personas, anticipación): la página `/contacto` muestra un TODO.
+- [ ] **Formulario de contacto:** a dónde llegan los mensajes (correo, CRM o Toast). Hoy `UnconfiguredContactInbox` responde "no disponible" y la página ofrece llamar o visitar; no se pierde ningún mensaje en silencio. Al conectarlo: nuevo adaptador en `src/infrastructure/contact/`, credenciales en variables de entorno y cambio en `di/container.ts`.
 - [ ] **Página "Nosotros" (`/nosotros`):** hitos de la línea de tiempo (año, título, texto y foto; hoy solo está la fundación en 1988), e historia y foto de los fundadores. Se cargan en `static-restaurant-repository.ts` (`milestones`, `foundersStory`). Mientras tanto, los hitos y los fundadores usan fotos actuales del negocio como provisionales (`timeline.photos` y `founders.photo` en `about-content.ts`); reemplazarlas cuando lleguen las reales.
 
 ## Integración con Toast POS

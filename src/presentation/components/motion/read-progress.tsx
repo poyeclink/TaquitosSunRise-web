@@ -1,4 +1,4 @@
-import styles from "@/presentation/components/about/about.module.css";
+import styles from "@/presentation/components/motion/motion.module.css";
 
 /** Barra fina arriba de la pantalla que se llena con el scroll de la página (solo CSS). */
 export function ReadProgress() {

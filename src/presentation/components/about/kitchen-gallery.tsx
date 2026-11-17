@@ -4,7 +4,8 @@ import Image from "next/image";
 import { useCallback, useEffect, useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import { kitchen } from "@/presentation/components/about/about-content";
 import styles from "@/presentation/components/about/about.module.css";
-import { RevealText } from "@/presentation/components/about/reveal-text";
+import motion from "@/presentation/components/motion/motion.module.css";
+import { RevealText } from "@/presentation/components/motion/reveal-text";
 import homeStyles from "@/presentation/components/home/home.module.css";
 
 const pad = (value: number) => String(value).padStart(2, "0");
@@ -161,7 +162,7 @@ export function KitchenGallery() {
               src={kitchen.lettering.src}
               alt={kitchen.lettering.alt}
               draggable={false}
-              className={`${styles.stamp} h-auto w-full max-w-[15rem]`}
+              className={`${motion.stamp} h-auto w-full max-w-[15rem]`}
             />
           </li>
         </ol>

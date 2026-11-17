@@ -3,7 +3,7 @@ import Link from "next/link";
 import type { CSSProperties } from "react";
 import type { ContactInfo } from "@/core/domain/restaurant/restaurant";
 import { aboutClosing } from "@/presentation/components/about/about-content";
-import styles from "@/presentation/components/about/about.module.css";
+import motion from "@/presentation/components/motion/motion.module.css";
 import { TodoNote } from "@/presentation/components/todo-note";
 
 /** Cierre: "Tu casa always" y dónde encontrarnos (datos del perfil; TODO si faltan). */
@@ -23,19 +23,19 @@ export function AboutClosing({ contact }: { contact: ContactInfo }) {
         fill
         sizes="100vw"
         quality={90}
-        className={`${styles.zoomOut} -z-20 object-cover`}
+        className={`${motion.zoomOut} -z-20 object-cover`}
       />
       <div aria-hidden className="absolute inset-0 -z-10 bg-charcoal/70" />
 
       <div
-        className={`${styles.grow} mx-auto grid max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-charcoal/50 md:grid-cols-[1.1fr_0.9fr]`}
+        className={`${motion.grow} mx-auto grid max-w-5xl overflow-hidden rounded-[2rem] bg-white shadow-2xl shadow-charcoal/50 md:grid-cols-[1.1fr_0.9fr]`}
       >
         <div className="flex flex-col items-start gap-6 p-7 sm:p-12">
           <h2 id="visita-title">
             <Image
               src={aboutClosing.lettering.src}
               alt={aboutClosing.lettering.alt}
-              className={`${styles.stamp} h-auto w-56 sm:w-64`}
+              className={`${motion.stamp} h-auto w-56 sm:w-64`}
             />
           </h2>
           <p className="text-xl leading-relaxed sm:text-2xl">{aboutClosing.text}</p>
@@ -66,7 +66,7 @@ export function AboutClosing({ contact }: { contact: ContactInfo }) {
             {visit.map(({ label, value, todo }, index) => (
               <div
                 key={label}
-                className={`${styles.stagger} border-b border-white/20 pb-4 last:border-0 last:pb-0`}
+                className={`${motion.stagger} border-b border-white/20 pb-4 last:border-0 last:pb-0`}
                 style={{ "--i": index + 1 } as CSSProperties}
               >
                 <dt className="text-sm text-white/80">{label}</dt>

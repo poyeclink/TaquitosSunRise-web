@@ -1,5 +1,5 @@
 import type { CSSProperties } from "react";
-import styles from "@/presentation/components/about/about.module.css";
+import styles from "@/presentation/components/motion/motion.module.css";
 
 /**
  * Texto que sube palabra por palabra al entrar en pantalla (scroll-driven, sin JS).
