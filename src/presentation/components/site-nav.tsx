@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 
 const NAV = [
   { href: "/", label: "Inicio" },
+  { href: "/nosotros", label: "Nosotros" },
   { href: "/menu", label: "Menú" },
 ] as const;
 
@@ -14,7 +15,7 @@ export function SiteNav() {
 
   return (
     <nav aria-label="Principal">
-      <ul className="flex items-center gap-1 text-lg font-medium sm:gap-2">
+      <ul className="flex items-center gap-0.5 text-base font-medium sm:gap-2 sm:text-lg">
         {NAV.map(({ href, label }) => {
           const current = pathname === href;
           return (
@@ -22,7 +23,7 @@ export function SiteNav() {
               <Link
                 href={href}
                 aria-current={current ? "page" : undefined}
-                className={`rounded-full px-4 py-2 transition-colors ${
+                className={`rounded-full px-3 py-2 transition-colors sm:px-4 ${
                   current ? "bg-crimson text-white" : "hover:bg-crimson/[0.08] hover:text-crimson"
                 }`}
               >

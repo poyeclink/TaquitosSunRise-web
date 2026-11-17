@@ -29,13 +29,13 @@ export function SiteFooter({ profile }: { profile: RestaurantProfile }) {
               </Link>
             </li>
             <li>
-              <Link href="/menu" className="hover:underline">
-                Menú
+              <Link href="/nosotros" className="hover:underline">
+                Nosotros
               </Link>
             </li>
             <li>
-              <Link href="/#historia" className="hover:underline">
-                Nuestra historia
+              <Link href="/menu" className="hover:underline">
+                Menú
               </Link>
             </li>
           </ul>

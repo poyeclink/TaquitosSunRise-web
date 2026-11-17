@@ -18,6 +18,7 @@ Estos puntos se validan con el cliente o el diseñador antes de usarlos en produ
 - [ ] Dominio definitivo: el guideline muestra `www.sunrisetaquitos.com` como ejemplo; confirmar.
 - [ ] Idioma o idiomas del sitio (EN / ES / bilingüe).
 - [ ] Detalles del servicio de catering.
+- [ ] **Página "Nosotros" (`/nosotros`):** hitos de la línea de tiempo (año, título, texto y foto; hoy solo está la fundación en 1988), e historia y foto de los fundadores. Se cargan en `static-restaurant-repository.ts` (`milestones`, `foundersStory`). Mientras tanto, los hitos y los fundadores usan fotos actuales del negocio como provisionales (`timeline.photos` y `founders.photo` en `about-content.ts`); reemplazarlas cuando lleguen las reales.
 
 ## Integración con Toast POS
 
