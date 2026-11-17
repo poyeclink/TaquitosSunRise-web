@@ -16,6 +16,19 @@ const PROFILE: RestaurantProfile = {
   pillars: ["Fe", "Servir", "Familia"],
   // TODO: datos pendientes del cliente (docs/brand/05-pendientes.md).
   contact: { address: null, phone: null, hours: null },
+  // Solo la fundación está documentada ("Est. 1988"). Los demás hitos y la historia de
+  // los fundadores los entrega el cliente (docs/brand/05-pendientes.md).
+  milestones: [
+    {
+      year: "1988",
+      title: "Nace Sunrise Taquitos",
+      text: "Desde la fe, la familia y el cariño por servir a los demás.",
+    },
+    { year: null, title: null, text: null },
+    { year: null, title: null, text: null },
+    { year: null, title: null, text: null },
+  ],
+  foundersStory: null,
 };
 
 export class StaticRestaurantRepository implements RestaurantRepository {

@@ -54,5 +54,6 @@ export function useTabs(count: number, initial = 0) {
     tabIndex: 0,
   });
 
-  return { active, tabProps, panelProps };
+  /** `setActive` cambia de pestaña sin mover el foco (p. ej. botones de anterior/siguiente). */
+  return { active, setActive, tabProps, panelProps };
 }

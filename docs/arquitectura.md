@@ -41,6 +41,7 @@ src/
     icon.svg, apple-icon.png
     (site)/               # sitio público: header + footer
       page.tsx            # inicio: hero, misión, visión
+      nosotros/page.tsx   # historia, propósito, cocina, comunidad y equipo
       menu/page.tsx
     # Próximamente: (admin)/ para el panel, api/webhooks/toast/route.ts
   core/
