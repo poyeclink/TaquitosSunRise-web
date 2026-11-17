@@ -1,0 +1,308 @@
+/*
+ * Efectos compartidos por las páginas interiores (Nosotros, Contacto…).
+ * Todo el movimiento respeta `prefers-reduced-motion` y, sin soporte de
+ * scroll-driven animations, el contenido se ve completo y quieto.
+ * Las reglas de este módulo no tienen @layer: ganan sobre las utilidades de Tailwind.
+ * Colores solo desde los tokens de marca.
+ */
+
+/* ---------- Barra de lectura (solo con soporte) ---------- */
+.readProgress {
+  display: none;
+  transform-origin: left;
+}
+
+/* ---------- Títulos que suben palabra por palabra ---------- */
+.word {
+  display: inline-block;
+  overflow: clip;
+  overflow-clip-margin: 0.25em;
+  vertical-align: top;
+  view-timeline: --word block;
+}
+
+.wordInner {
+  display: inline-block;
+}
+
+/* ---------- Tarjetas con inclinación 3D y brillo que sigue al cursor ---------- */
+.tilt {
+  position: relative;
+}
+
+.tilt::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--px, 50%) var(--py, 50%),
+    color-mix(in srgb, var(--brand-white) 22%, transparent),
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.tilt:hover::after {
+  opacity: 1;
+}
+
+/* ---------- Movimiento opcional ---------- */
+@media (prefers-reduced-motion: no-preference) {
+  /* Hero: la foto se asienta al cargar… */
+  .heroPhoto {
+    animation: settle 2.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* …y el texto sube línea por línea (`--i` = orden). */
+  .rise {
+    animation: rise 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 110ms + 120ms);
+  }
+
+  .float {
+    animation: float 6s ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
+  }
+
+  .tilt {
+    transform: perspective(56rem) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  .magnetic {
+    transition: translate 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* Palabras que entran una tras otra al cambiar de texto. */
+  .wordIn {
+    display: inline-block;
+    animation: word-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation-delay: calc(var(--i, 0) * 22ms);
+  }
+
+  /* Barra de una cuenta regresiva (`--duration`). */
+  .timer {
+    animation: timer var(--duration, 8s) linear both;
+  }
+
+  .spin {
+    animation: spin 18s linear infinite;
+  }
+
+  /* Aparición de un bloque al montarse (p. ej. el resultado de un formulario). */
+  .enter {
+    animation: enter 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @supports (animation-timeline: view()) {
+    .readProgress {
+      display: block;
+      animation: grow-x linear both;
+      animation-timeline: scroll(root);
+    }
+
+    /* Hero: la foto baja más lento que el scroll y el texto se despide al salir. */
+    .heroParallax {
+      will-change: translate;
+      animation: parallax linear both;
+      animation-timeline: scroll(root);
+      animation-range: 0 100vh;
+    }
+
+    .heroExit {
+      animation: hero-exit cubic-bezier(0.5, 0, 0.75, 0) both;
+      animation-timeline: view();
+      animation-range: exit 0% exit 90%;
+    }
+
+    /* Cada palabra tiene su propio desfase (`--i`). */
+    .wordInner {
+      animation: word-up cubic-bezier(0.25, 1, 0.5, 1) both;
+      animation-timeline: --word;
+      animation-range: entry calc(var(--i, 0) * 4%) cover calc(32% + var(--i, 0) * 4%);
+    }
+
+    /* Entrada escalonada genérica (`--i` = orden en el grupo). */
+    .stagger {
+      animation: stagger cubic-bezier(0.25, 1, 0.5, 1) both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 6%) cover calc(38% + var(--i, 0) * 6%);
+    }
+
+    .pop {
+      animation: pop cubic-bezier(0.34, 1.3, 0.64, 1) both;
+      animation-timeline: view();
+      animation-range: entry calc(var(--i, 0) * 6%) cover calc(22% + var(--i, 0) * 6%);
+    }
+
+    /* Texto que se "entinta" a medida que se lee. */
+    .ink {
+      animation: ink ease-out both;
+      animation-timeline: view();
+      animation-range: entry 30% cover 55%;
+    }
+
+    /* Fotos que se desplazan dentro de su marco (parallax interno). */
+    .drift {
+      animation: drift linear both;
+      animation-timeline: view();
+    }
+
+    /* Sello que cae y se estampa. */
+    .stamp {
+      animation: stamp cubic-bezier(0.34, 1.25, 0.64, 1) both;
+      animation-timeline: view();
+      animation-range: entry 10% cover 40%;
+    }
+
+    /* Foto que se aleja y tarjeta que crece. */
+    .zoomOut {
+      animation: zoom-out linear both;
+      animation-timeline: view();
+    }
+
+    .grow {
+      animation: grow cubic-bezier(0.25, 1, 0.5, 1) both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 45%;
+    }
+  }
+}
+
+@keyframes word-in {
+  from {
+    opacity: 0;
+    translate: 0 0.6em;
+    filter: blur(4px);
+  }
+}
+
+@keyframes timer {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
+@keyframes spin {
+  to {
+    rotate: 360deg;
+  }
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    translate: 0 1.25rem;
+    scale: 0.97;
+  }
+}
+
+@keyframes settle {
+  from {
+    scale: 1.12;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    translate: 0 1.75rem;
+  }
+}
+
+@keyframes float {
+  50% {
+    transform: translateY(-0.6rem) rotate(-4deg);
+  }
+}
+
+@keyframes parallax {
+  to {
+    translate: 0 14vh;
+  }
+}
+
+@keyframes hero-exit {
+  to {
+    opacity: 0.15;
+    translate: 0 -3rem;
+    scale: 0.98;
+  }
+}
+
+@keyframes grow-x {
+  from {
+    scale: 0 1;
+  }
+  to {
+    scale: 1 1;
+  }
+}
+
+@keyframes word-up {
+  from {
+    translate: 0 105%;
+    rotate: 2deg;
+  }
+}
+
+@keyframes stagger {
+  from {
+    opacity: 0;
+    translate: 0 2rem;
+    scale: 0.985;
+  }
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    scale: 0.8;
+  }
+}
+
+@keyframes ink {
+  from {
+    opacity: 0.18;
+  }
+}
+
+@keyframes drift {
+  from {
+    translate: 0 -5%;
+  }
+  to {
+    translate: 0 5%;
+  }
+}
+
+@keyframes stamp {
+  from {
+    opacity: 0;
+    scale: 1.35;
+    rotate: -10deg;
+  }
+}
+
+@keyframes zoom-out {
+  from {
+    scale: 1.18;
+  }
+  to {
+    scale: 1;
+  }
+}
+
+@keyframes grow {
+  from {
+    opacity: 0;
+    scale: 0.94;
+    translate: 0 2.5rem;
+  }
+}

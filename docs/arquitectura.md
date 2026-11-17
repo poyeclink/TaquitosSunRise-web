@@ -41,15 +41,17 @@ src/
     icon.svg, apple-icon.png
     (site)/               # sitio público: header + footer
       page.tsx            # inicio: hero, misión, visión
-      nosotros/page.tsx   # historia, propósito, cocina, comunidad y equipo
+      nosotros/page.tsx   # historia, propósito, cocina, comunidad y fundadores
+      contacto/           # formulario (Server Action en actions.ts), ubicación y catering
       menu/page.tsx
     # Próximamente: (admin)/ para el panel, api/webhooks/toast/route.ts
   core/
-    domain/{shared,menu,restaurant}/
-    application/{menu,restaurant}/
-  infrastructure/{menu,restaurant}/
+    domain/{shared,menu,restaurant,contact}/
+    application/{menu,restaurant,contact}/
+  infrastructure/{menu,restaurant,contact}/
   di/container.ts
   presentation/{components,format}/
+    components/motion/    # efectos compartidos: scroll suave, revelados, tilt, barra de lectura
 ```
 
 Alias: `@/*` → `src/*` y `@brand/*` → `brand-assets/*`. Los logos y frases se importan directo desde `brand-assets` (sin copiarlos a `public/`), así hay una sola copia de cada archivo.

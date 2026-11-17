@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { founders } from "@/presentation/components/about/about-content";
-import styles from "@/presentation/components/about/about.module.css";
-import { RevealText } from "@/presentation/components/about/reveal-text";
+import motion from "@/presentation/components/motion/motion.module.css";
+import { RevealText } from "@/presentation/components/motion/reveal-text";
 import homeStyles from "@/presentation/components/home/home.module.css";
 import { TodoNote } from "@/presentation/components/todo-note";
 
@@ -19,10 +19,10 @@ export function AboutFounders({ story }: { story: string | null }) {
         </header>
 
         <article
-          className={`${styles.grow} grid gap-8 overflow-hidden rounded-[2rem] bg-charcoal/[0.04] p-5 ring-1 ring-charcoal/10 sm:p-8 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 md:p-10`}
+          className={`${motion.grow} grid gap-8 overflow-hidden rounded-[2rem] bg-charcoal/[0.04] p-5 ring-1 ring-charcoal/10 sm:p-8 md:grid-cols-[0.9fr_1.1fr] md:items-center md:gap-12 md:p-10`}
         >
           <div className={`${homeStyles.zoomOnHover} relative aspect-[4/3] overflow-hidden rounded-[1.5rem] bg-charcoal`}>
-            <div aria-hidden className={`${styles.drift} absolute inset-x-0 -inset-y-[10%]`}>
+            <div aria-hidden className={`${motion.drift} absolute inset-x-0 -inset-y-[10%]`}>
               <Image
                 src={founders.photo.src}
                 alt={founders.photo.alt}
@@ -37,7 +37,7 @@ export function AboutFounders({ story }: { story: string | null }) {
             <Image
               src={founders.lettering.src}
               alt={founders.lettering.alt}
-              className={`${styles.stamp} h-auto w-44 -rotate-3 sm:w-52`}
+              className={`${motion.stamp} h-auto w-44 -rotate-3 sm:w-52`}
             />
             <h3 className="text-3xl font-bold sm:text-4xl">{founders.heading}</h3>
             <p className="text-lg leading-relaxed sm:text-xl">

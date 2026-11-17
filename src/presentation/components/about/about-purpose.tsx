@@ -1,9 +1,9 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { purpose } from "@/presentation/components/about/about-content";
-import styles from "@/presentation/components/about/about.module.css";
+import motion from "@/presentation/components/motion/motion.module.css";
 import { PurposeStack } from "@/presentation/components/about/purpose-stack";
-import { RevealText } from "@/presentation/components/about/reveal-text";
+import { RevealText } from "@/presentation/components/motion/reveal-text";
 import { StatementSwitch } from "@/presentation/components/about/statement-switch";
 import homeStyles from "@/presentation/components/home/home.module.css";
 
@@ -27,17 +27,17 @@ export function AboutPurpose({ mission, vision }: { mission: string; vision: str
             <RevealText text={purpose.title} />
           </h2>
           <p
-            className={`${styles.stagger} mt-6 inline-flex flex-wrap items-center justify-center gap-3 text-xl text-white/85 sm:text-2xl`}
+            className={`${motion.stagger} mt-6 inline-flex flex-wrap items-center justify-center gap-3 text-xl text-white/85 sm:text-2xl`}
             style={{ "--i": 2 } as CSSProperties}
           >
-            <Image src={purpose.items[1].icon} alt="" className={`${styles.spin} h-auto w-9`} />
+            <Image src={purpose.items[1].icon} alt="" className={`${motion.spin} h-auto w-9`} />
             {purpose.lead}
           </p>
         </header>
 
         <PurposeStack items={purpose.items} />
 
-        <div className={`${styles.grow} mt-16 sm:mt-24`}>
+        <div className={`${motion.grow} mt-16 sm:mt-24`}>
           <StatementSwitch
             items={[
               { label: "Misión", text: mission, icon: missionIcon },

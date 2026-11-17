@@ -1,0 +1,142 @@
+/*
+ * Efectos propios de "Contacto". Los genéricos viven en `motion/motion.module.css`.
+ * Todo el movimiento respeta `prefers-reduced-motion`. Colores solo desde los tokens.
+ */
+
+/* ---------- Hero: luz que sigue al cursor (`--mx` / `--my` de PointerField) ---------- */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    32rem circle at calc((var(--mx, 0) + 1) * 50%) calc((var(--my, 0) + 1) * 50%),
+    color-mix(in srgb, var(--brand-white) 16%, transparent),
+    transparent 70%
+  );
+}
+
+/* ---------- Palabra que cambia ---------- */
+.swap {
+  display: inline-grid;
+  overflow: clip;
+  overflow-clip-margin: 0.2em;
+  vertical-align: bottom;
+}
+
+.swapUnderline {
+  transform-origin: left;
+}
+
+/* ---------- Formulario: sol que avanza con el progreso (`--progress` de 0 a 1) ---------- */
+.progressFill {
+  transform-origin: left;
+  scale: var(--progress, 0) 1;
+  transition: scale 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.progressSun {
+  left: calc(var(--progress, 0) * 100%);
+  transition:
+    left 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+    rotate 0.6s ease;
+  rotate: calc(var(--progress, 0) * 270deg);
+}
+
+/* ---------- Chispas del botón de enviar (sobre fondo blanco) ---------- */
+/* Doble clase para ganarle al color blanco de las chispas del home. */
+.sparks.sparks > span {
+  background: var(--brand-crimson);
+}
+
+.sparks.sparks > span:nth-child(even) {
+  background: var(--brand-aqua);
+}
+
+/* ---------- Planificador de catering: control deslizante ---------- */
+.range {
+  appearance: none;
+  height: 0.5rem;
+  border-radius: 9999px;
+  background: linear-gradient(
+    to right,
+    var(--brand-crimson) var(--fill, 0%),
+    color-mix(in srgb, var(--brand-charcoal) 15%, transparent) var(--fill, 0%)
+  );
+  cursor: pointer;
+}
+
+.range::-webkit-slider-thumb {
+  appearance: none;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: 4px solid var(--brand-white);
+  border-radius: 9999px;
+  background: var(--brand-crimson);
+  box-shadow: 0 0.25rem 0.75rem color-mix(in srgb, var(--brand-charcoal) 40%, transparent);
+  transition: scale 0.2s ease;
+}
+
+.range::-moz-range-thumb {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 4px solid var(--brand-white);
+  border-radius: 9999px;
+  background: var(--brand-crimson);
+}
+
+.range:active::-webkit-slider-thumb {
+  scale: 1.15;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .spotlight {
+    transition: background 0.15s linear;
+  }
+
+  .swapIn {
+    animation: swap-in 0.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .swapUnderline {
+    animation: underline 2.6s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  /* Al completar el formulario, el sol late. */
+  .ready {
+    animation: ready 1.4s ease-in-out infinite;
+  }
+
+  /* El número del planificador rebota al cambiar. */
+  .bump {
+    animation: bump 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+}
+
+@keyframes swap-in {
+  from {
+    opacity: 0;
+    translate: 0 90%;
+    filter: blur(6px);
+  }
+}
+
+@keyframes underline {
+  from {
+    scale: 0 1;
+  }
+  30% {
+    scale: 1 1;
+  }
+}
+
+@keyframes ready {
+  50% {
+    scale: 1.18;
+  }
+}
+
+@keyframes bump {
+  50% {
+    scale: 1.2;
+  }
+}

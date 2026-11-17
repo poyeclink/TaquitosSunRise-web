@@ -38,6 +38,11 @@ export function SiteFooter({ profile }: { profile: RestaurantProfile }) {
                 Menú
               </Link>
             </li>
+            <li>
+              <Link href="/contacto" className="hover:underline">
+                Contacto
+              </Link>
+            </li>
           </ul>
         </nav>
 

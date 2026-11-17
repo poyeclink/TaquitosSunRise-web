@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import { facts } from "@/presentation/components/about/about-content";
 import styles from "@/presentation/components/about/about.module.css";
+import motion from "@/presentation/components/motion/motion.module.css";
 
 /** Número que cuenta al entrar en pantalla. El valor real queda en texto para lectores y SEO. */
 function Count({ to, from = 0, prefix = "" }: { to: number; from?: number; prefix?: string }) {
@@ -32,7 +33,7 @@ export function AboutFacts({ foundedYear, pillars }: { foundedYear: number; pill
         {items.map(({ label, value, big }, index) => (
           <div
             key={label}
-            className={`${styles.stagger} group relative flex flex-col-reverse justify-end gap-2 overflow-hidden rounded-[1.75rem] bg-white p-5 ring-1 ring-charcoal/10 transition duration-500 hover:-translate-y-1 hover:shadow-[0_1.5rem_3rem_-1.5rem] hover:shadow-crimson/40 hover:ring-crimson/30 sm:p-8`}
+            className={`${motion.stagger} group relative flex flex-col-reverse justify-end gap-2 overflow-hidden rounded-[1.75rem] bg-white p-5 ring-1 ring-charcoal/10 transition duration-500 hover:-translate-y-1 hover:shadow-[0_1.5rem_3rem_-1.5rem] hover:shadow-crimson/40 hover:ring-crimson/30 sm:p-8`}
             style={{ "--i": index } as CSSProperties}
           >
             {/* Barra que se llena al pasar el cursor. */}

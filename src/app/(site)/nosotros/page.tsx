@@ -8,9 +8,9 @@ import { AboutHero } from "@/presentation/components/about/about-hero";
 import { AboutPurpose } from "@/presentation/components/about/about-purpose";
 import { AboutTimeline } from "@/presentation/components/about/about-timeline";
 import { KitchenGallery } from "@/presentation/components/about/kitchen-gallery";
-import { ReadProgress } from "@/presentation/components/about/read-progress";
+import { ReadProgress } from "@/presentation/components/motion/read-progress";
 import { ScrollBand } from "@/presentation/components/about/scroll-band";
-import { SmoothScroll } from "@/presentation/components/about/smooth-scroll";
+import { SmoothScroll } from "@/presentation/components/motion/smooth-scroll";
 
 export const metadata: Metadata = {
   title: "Nosotros",

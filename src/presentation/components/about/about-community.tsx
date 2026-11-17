@@ -1,9 +1,9 @@
 import Image from "next/image";
 import type { CSSProperties } from "react";
 import { community } from "@/presentation/components/about/about-content";
-import styles from "@/presentation/components/about/about.module.css";
-import { Tilt } from "@/presentation/components/about/pointer-fx";
-import { RevealText } from "@/presentation/components/about/reveal-text";
+import motion from "@/presentation/components/motion/motion.module.css";
+import { Tilt } from "@/presentation/components/motion/pointer-fx";
+import { RevealText } from "@/presentation/components/motion/reveal-text";
 import homeStyles from "@/presentation/components/home/home.module.css";
 
 /** "Cada persona importa: quien llega, quien trabaja y quien vuelve" (manifiesto). */
@@ -13,7 +13,7 @@ export function AboutCommunity() {
       aria-labelledby="comunidad-title"
       className="relative isolate overflow-hidden bg-crimson px-4 py-20 text-white sm:py-28"
     >
-      <Image src={community.texture} alt="" fill sizes="100vw" className={`${styles.drift} -z-10 scale-125 object-cover`} />
+      <Image src={community.texture} alt="" fill sizes="100vw" className={`${motion.drift} -z-10 scale-125 object-cover`} />
 
       <div className="mx-auto max-w-6xl">
         <header className="mb-12 max-w-2xl sm:mb-16">
@@ -27,14 +27,14 @@ export function AboutCommunity() {
           {community.people.map((person, index) => (
             <li
               key={person.title}
-              className={`${styles.stagger} ${index === 1 ? "md:translate-y-10" : ""}`}
+              className={`${motion.stagger} ${index === 1 ? "md:translate-y-10" : ""}`}
               style={{ "--i": index } as CSSProperties}
             >
               <Tilt
                 className={`${homeStyles.zoomOnHover} group isolate flex aspect-[4/5] flex-col justify-end overflow-hidden rounded-[2rem] bg-charcoal p-6 shadow-[0_2rem_4rem_-2rem] shadow-charcoal/70 sm:p-8 md:aspect-[3/4]`}
               >
                 {/* Parallax interno: la foto se desplaza dentro del marco con el scroll. */}
-                <div aria-hidden className={`${styles.drift} absolute inset-x-0 -inset-y-[10%] -z-20`}>
+                <div aria-hidden className={`${motion.drift} absolute inset-x-0 -inset-y-[10%] -z-20`}>
                   <Image
                     src={person.photo.src}
                     alt={person.photo.alt}
@@ -63,9 +63,9 @@ export function AboutCommunity() {
         </ul>
 
         <div
-          className={`${styles.grow} mt-16 grid items-center gap-8 rounded-[2rem] bg-white p-7 text-charcoal shadow-2xl shadow-charcoal/40 sm:p-10 md:mt-24 md:grid-cols-[auto_1fr] md:gap-10`}
+          className={`${motion.grow} mt-16 grid items-center gap-8 rounded-[2rem] bg-white p-7 text-charcoal shadow-2xl shadow-charcoal/40 sm:p-10 md:mt-24 md:grid-cols-[auto_1fr] md:gap-10`}
         >
-          <span className={`${styles.stamp} grid size-20 place-items-center rounded-full bg-crimson/[0.08] sm:size-24`}>
+          <span className={`${motion.stamp} grid size-20 place-items-center rounded-full bg-crimson/[0.08] sm:size-24`}>
             <Image src={community.early.icon} alt="" className="h-auto w-12 sm:w-14" />
           </span>
           <div>
@@ -75,7 +75,7 @@ export function AboutCommunity() {
               {community.early.groups.map((group, index) => (
                 <li
                   key={group}
-                  className={`${styles.pop} flex cursor-default items-center gap-2 rounded-full border border-charcoal/15 px-4 py-1.5 text-sm font-bold transition-colors duration-300 hover:border-crimson hover:bg-crimson hover:text-white sm:text-base`}
+                  className={`${motion.pop} flex cursor-default items-center gap-2 rounded-full border border-charcoal/15 px-4 py-1.5 text-sm font-bold transition-colors duration-300 hover:border-crimson hover:bg-crimson hover:text-white sm:text-base`}
                   style={{ "--i": index } as CSSProperties}
                 >
                   <span aria-hidden className="size-1.5 rounded-full bg-aqua" />

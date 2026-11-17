@@ -2,7 +2,7 @@
 
 import Image, { type StaticImageData } from "next/image";
 import { useEffect, useRef, useState, type CSSProperties } from "react";
-import styles from "@/presentation/components/about/about.module.css";
+import motion from "@/presentation/components/motion/motion.module.css";
 import { useTabs } from "@/presentation/components/home/use-tabs";
 
 export interface Statement {
@@ -119,7 +119,7 @@ export function StatementSwitch({ items }: { items: readonly Statement[] }) {
                 <blockquote key={on ? "on" : "off"} className="text-pretty text-xl font-medium leading-snug sm:text-3xl sm:leading-snug">
                   {words.map((word, wordIndex) => (
                     <span key={wordIndex}>
-                      <span className={on ? styles.wordIn : ""} style={{ "--i": wordIndex } as CSSProperties}>
+                      <span className={on ? motion.wordIn : ""} style={{ "--i": wordIndex } as CSSProperties}>
                         {word}
                       </span>
                       {wordIndex < words.length - 1 ? " " : null}
@@ -136,7 +136,7 @@ export function StatementSwitch({ items }: { items: readonly Statement[] }) {
           <div aria-hidden className="mt-8 h-1 max-w-xs overflow-hidden rounded-full bg-white/15 motion-reduce:hidden">
             <span
               key={`${active}-${running}`}
-              className={`block h-full origin-left rounded-full bg-aqua ${running ? styles.timer : "scale-x-0"}`}
+              className={`block h-full origin-left rounded-full bg-aqua ${running ? motion.timer : "scale-x-0"}`}
               style={{ "--duration": `${INTERVAL}ms` } as CSSProperties}
             />
           </div>

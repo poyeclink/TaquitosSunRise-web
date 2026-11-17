@@ -3,6 +3,7 @@
 import Image, { type StaticImageData } from "next/image";
 import { useEffect, useRef, type CSSProperties } from "react";
 import styles from "@/presentation/components/about/about.module.css";
+import motion from "@/presentation/components/motion/motion.module.css";
 import type { Photo } from "@/presentation/media/photos";
 
 export interface StackItem {
@@ -106,7 +107,7 @@ export function PurposeStack({ items }: { items: readonly StackItem[] }) {
                 {item.tags.map((tag, tagIndex) => (
                   <li
                     key={tag}
-                    className={`${styles.pop} rounded-full border border-current/25 px-4 py-1.5 text-sm font-bold`}
+                    className={`${motion.pop} rounded-full border border-current/25 px-4 py-1.5 text-sm font-bold`}
                     style={{ "--i": tagIndex } as CSSProperties}
                   >
                     {tag}

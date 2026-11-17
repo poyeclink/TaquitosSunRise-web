@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, type ElementType, type PointerEvent, type ReactNode } from "react";
-import styles from "@/presentation/components/about/about.module.css";
+import styles from "@/presentation/components/motion/motion.module.css";
 
 /** Solo mouse: en táctil no hay cursor que seguir. */
 const isMouse = (event: PointerEvent) => event.pointerType === "mouse";
@@ -52,6 +52,46 @@ export function Tilt({
     >
       {children}
     </Tag>
+  );
+}
+
+/**
+ * Botón "magnético": se inclina hacia el cursor cuando pasa cerca y vuelve al soltarlo.
+ * Envuelve a su hijo en un `span` (no cambia la semántica del botón o enlace).
+ */
+export function Magnetic({
+  strength = 0.25,
+  className = "",
+  children,
+}: {
+  strength?: number;
+  className?: string;
+  children: ReactNode;
+}) {
+  const ref = useRef<HTMLSpanElement>(null);
+
+  const onPointerMove = (event: PointerEvent) => {
+    const el = ref.current;
+    if (!el || !isMouse(event) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const rect = el.getBoundingClientRect();
+    const x = (event.clientX - (rect.left + rect.width / 2)) * strength;
+    const y = (event.clientY - (rect.top + rect.height / 2)) * strength;
+    el.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
+  };
+
+  const onPointerLeave = () => {
+    if (ref.current) ref.current.style.translate = "0 0";
+  };
+
+  return (
+    <span
+      ref={ref}
+      onPointerMove={onPointerMove}
+      onPointerLeave={onPointerLeave}
+      className={`${styles.magnetic} inline-flex ${className}`}
+    >
+      {children}
+    </span>
   );
 }
 

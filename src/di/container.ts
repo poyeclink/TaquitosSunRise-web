@@ -1,7 +1,9 @@
 import "server-only";
 
+import { SendContactMessage } from "@/core/application/contact/send-contact-message";
 import { GetPublicMenu } from "@/core/application/menu/get-public-menu";
 import { GetRestaurantProfile } from "@/core/application/restaurant/get-restaurant-profile";
+import { UnconfiguredContactInbox } from "@/infrastructure/contact/unconfigured-contact-inbox";
 import { StaticMenuRepository } from "@/infrastructure/menu/static-menu-repository";
 import { StaticRestaurantRepository } from "@/infrastructure/restaurant/static-restaurant-repository";
 
@@ -16,3 +18,4 @@ const restaurantRepository = new StaticRestaurantRepository();
 
 export const getPublicMenu = new GetPublicMenu(menuRepository);
 export const getRestaurantProfile = new GetRestaurantProfile(restaurantRepository);
+export const sendContactMessage = new SendContactMessage(new UnconfiguredContactInbox());
